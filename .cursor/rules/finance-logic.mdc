@@ -1,0 +1,24 @@
+---
+description: 금융 계산·포맷 유틸 작성 규칙
+globs: src/lib/**
+alwaysApply: false
+---
+
+# 금융 로직 규칙
+
+- 이자·상환·만기 계산은 `src/lib/finance.ts`의 순수 함수로만 작성한다.
+- finance.ts 변경 시 `src/lib/finance.test.ts`(Vitest)로 검증한다.
+- 월 상환액 단위 테스트는 `monthlyPayment()`(원 단위 정수 반올림)를 사용한다.
+- UI 컴포넌트에서 직접 금리 공식을 계산하지 않는다.
+- 금액 표시는 `src/lib/format.ts`의 `formatWon()`을 사용한다 (`1,000,000원` 형식).
+- 입력 검증은 UI에서 1차, `finance.ts`에서 2차(throw Error)로 이중 처리한다.
+- 소수점 금융 값은 `round2()`로 반올림 후 반환한다.
+- 상담 메모 CRUD는 `src/lib/storage.ts`에만 둔다.
+
+```typescript
+// ✅ GOOD — UI에서 finance 호출
+const result = calculateRepayment({ principal, annualRate, months })
+
+// ❌ BAD — 컴포넌트 내부 계산
+const monthly = principal * rate / 12
+```

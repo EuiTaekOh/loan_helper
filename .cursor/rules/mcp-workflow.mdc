@@ -1,0 +1,24 @@
+---
+description: MCP Server 활용 Workflow (Step 6)
+alwaysApply: true
+---
+
+# MCP Workflow
+
+이 프로젝트에 연결된 무료 MCP Server를 아래 상황에 활용한다.
+
+| MCP | 용도 |
+|-----|------|
+| **fetch** | KB·금융 관련 공개 URL, API 문서, 최신 금리 정보 조회 |
+| **memory** | 상담 패턴·반복 요구사항·프로젝트 결정사항 기억 |
+| **filesystem** | `docs/`, `src/` 범위 파일 읽기·쓰기 (프로젝트 루트 한정) |
+
+## Task별 가이드
+
+- **금융 계산 수정**: MCP 불필요 → `finance.ts` + Rules(`finance-logic`) 우선
+- **UI/디자인 수정**: MCP 불필요 → Rules(`ui-components`, `toss-style-design`) 우선
+- **외부 금리·규정 확인**: `fetch` MCP로 공개 자료 조회 후 코드 반영
+- **상담 시나리오 반복**: `memory` MCP에 고객 유형·FAQ 저장 후 참조
+- **대량 파일 탐색**: `filesystem` MCP로 `src/` 구조 확인
+
+MCP 결과는 항상 `finance.ts` / `format.ts` 규칙을 따른 뒤 UI에 반영한다.

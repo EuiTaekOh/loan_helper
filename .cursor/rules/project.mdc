@@ -1,0 +1,10 @@
+---
+description: 여신 상담 도우미 프로젝트 공통 규칙
+alwaysApply: true
+---
+- 이 프로젝트는 React 19 + TypeScript + Vite + TailwindCSS 로 작성한다.
+- 모든 주석과 UI 텍스트는 한국어로 작성한다.
+- 금액은 천 단위 콤마(,)와 '원' 단위로 표시한다.
+- 계산 로직(이자·상환액)은 src/lib/finance.ts 에 순수 함수로 분리하고 UI와 섞지 않는다.
+- 컴포넌트는 함수형으로 작성하고, 상태는 useState/useReducer 를 쓴다.
+- 새 라이브러리는 꼭 필요할 때만, 추가 이유를 먼저 설명한 뒤 추가한다.
