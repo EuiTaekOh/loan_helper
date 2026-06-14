@@ -75,22 +75,19 @@ function ConsultationMemo() {
 
       <ul className="mt-4 space-y-3">
         {filteredMemos.length === 0 ? (
-          <li className="rounded-toss-m bg-toss-grey-100 px-4 py-6 text-center text-[15px] text-toss-grey-600">
+          <li className="toss-empty-state">
             {memos.length === 0
               ? '저장된 메모가 없어요. 첫 번째 메모를 추가해 보세요.'
               : '검색 결과가 없어요.'}
           </li>
         ) : (
           filteredMemos.map((memo) => (
-            <li
-              key={memo.id}
-              className="rounded-toss-xl border border-toss-grey-200 bg-white p-4 shadow-toss-1"
-            >
-              <p className="whitespace-pre-wrap text-[15px] leading-[1.5] text-toss-grey-800">
-                {memo.content}
-              </p>
+            <li key={memo.id} className="toss-memo-item">
+              <p className="toss-memo-text">{memo.content}</p>
               <div className="mt-3 flex items-center justify-between gap-2">
-                <span className="text-[12px] text-toss-grey-500">{formatDateTime(memo.createdAt)}</span>
+                <span className="text-[12px] text-toss-grey-500 dark:text-toss-grey-400">
+                  {formatDateTime(memo.createdAt)}
+                </span>
                 <button type="button" onClick={() => handleDeleteMemo(memo.id)} className="toss-btn-ghost">
                   삭제
                 </button>

@@ -11,29 +11,29 @@
 
   body {
     margin: 0;
-    @apply bg-toss-grey-50 font-sans text-[15px] leading-[1.5] text-toss-grey-900 antialiased;
+    @apply bg-toss-grey-50 font-sans text-[15px] leading-[1.5] text-toss-grey-900 antialiased transition-colors duration-200 ease-toss dark:bg-toss-grey-900 dark:text-toss-grey-50;
   }
 }
 
 @layer components {
   .toss-card {
-    @apply rounded-toss-xl border border-toss-grey-200 bg-white p-5 shadow-toss-1;
+    @apply rounded-toss-xl border border-toss-grey-200 bg-white p-5 shadow-toss-1 dark:border-toss-grey-700 dark:bg-toss-grey-800 dark:shadow-none;
   }
 
   .toss-title {
-    @apply text-[18px] font-semibold leading-[1.45] tracking-[-0.01em] text-toss-grey-900;
+    @apply text-[18px] font-semibold leading-[1.45] tracking-[-0.01em] text-toss-grey-900 dark:text-toss-grey-50;
   }
 
   .toss-label {
-    @apply text-[15px] font-semibold leading-[1.25] tracking-[-0.005em] text-toss-grey-700;
+    @apply text-[15px] font-semibold leading-[1.25] tracking-[-0.005em] text-toss-grey-700 dark:text-toss-grey-300;
   }
 
   .toss-input {
-    @apply h-12 w-full rounded-toss-m border border-toss-grey-200 bg-toss-grey-100 px-4 text-[15px] text-toss-grey-900 outline-none transition-colors duration-200 ease-toss placeholder:text-toss-grey-500 focus:border-[1.5px] focus:border-toss-blue focus:bg-white;
+    @apply h-12 w-full rounded-toss-m border border-toss-grey-200 bg-toss-grey-100 px-4 text-[15px] text-toss-grey-900 outline-none transition-colors duration-200 ease-toss placeholder:text-toss-grey-500 focus:border-[1.5px] focus:border-toss-blue focus:bg-white dark:border-toss-grey-600 dark:bg-toss-grey-900 dark:text-toss-grey-50 dark:placeholder:text-toss-grey-500 dark:focus:border-toss-blue dark:focus:bg-toss-grey-800;
   }
 
   .toss-textarea {
-    @apply min-h-24 w-full rounded-toss-m border border-toss-grey-200 bg-toss-grey-100 px-4 py-3 text-[15px] text-toss-grey-900 outline-none transition-colors duration-200 ease-toss placeholder:text-toss-grey-500 focus:border-[1.5px] focus:border-toss-blue focus:bg-white;
+    @apply min-h-24 w-full rounded-toss-m border border-toss-grey-200 bg-toss-grey-100 px-4 py-3 text-[15px] text-toss-grey-900 outline-none transition-colors duration-200 ease-toss placeholder:text-toss-grey-500 focus:border-[1.5px] focus:border-toss-blue focus:bg-white dark:border-toss-grey-600 dark:bg-toss-grey-900 dark:text-toss-grey-50 dark:placeholder:text-toss-grey-500 dark:focus:border-toss-blue dark:focus:bg-toss-grey-800;
   }
 
   .toss-btn-primary {
@@ -41,11 +41,11 @@
   }
 
   .toss-btn-secondary {
-    @apply inline-flex h-10 items-center justify-center rounded-toss-m bg-toss-grey-100 px-4 text-[15px] font-semibold leading-[1.25] tracking-[-0.005em] text-toss-grey-900 transition-colors duration-200 ease-toss hover:bg-toss-grey-200 active:bg-toss-grey-300 disabled:cursor-not-allowed disabled:opacity-30;
+    @apply inline-flex h-10 items-center justify-center rounded-toss-m bg-toss-grey-100 px-4 text-[15px] font-semibold leading-[1.25] tracking-[-0.005em] text-toss-grey-900 transition-colors duration-200 ease-toss hover:bg-toss-grey-200 active:bg-toss-grey-300 disabled:cursor-not-allowed disabled:opacity-30 dark:bg-toss-grey-700 dark:text-toss-grey-50 dark:hover:bg-toss-grey-600 dark:active:bg-toss-grey-500;
   }
 
   .toss-btn-ghost {
-    @apply inline-flex h-10 items-center justify-center rounded-toss-m px-4 text-[15px] font-semibold text-toss-blue transition-opacity duration-200 ease-toss hover:opacity-80 active:opacity-70 disabled:cursor-not-allowed disabled:opacity-30;
+    @apply inline-flex h-10 items-center justify-center rounded-toss-m px-4 text-[15px] font-semibold text-toss-blue transition-opacity duration-200 ease-toss hover:opacity-80 active:opacity-70 disabled:cursor-not-allowed disabled:opacity-30 dark:text-toss-blue;
   }
 
   .toss-error {
@@ -53,38 +53,65 @@
   }
 
   .toss-error-box {
-    @apply rounded-toss-m border border-toss-red/20 bg-toss-red/5 px-4 py-3 text-[15px] text-toss-red;
+    @apply rounded-toss-m border border-toss-red/20 bg-toss-red/5 px-4 py-3 text-[15px] text-toss-red dark:border-toss-red/30 dark:bg-toss-red/10;
   }
 
   .toss-stat-card {
-    @apply rounded-toss-xl bg-toss-grey-100 p-4;
+    @apply rounded-toss-xl bg-toss-grey-100 p-4 dark:bg-toss-grey-900;
   }
 
   .toss-stat-label {
-    @apply text-[12px] font-medium leading-[1.4] text-toss-grey-600;
+    @apply text-[12px] font-medium leading-[1.4] text-toss-grey-600 dark:text-toss-grey-400;
   }
 
   .toss-stat-value {
-    @apply mt-1 text-[17px] font-bold tabular-nums leading-[1.45] tracking-[-0.01em] text-toss-grey-900;
+    @apply mt-1 text-[17px] font-bold tabular-nums leading-[1.45] tracking-[-0.01em] text-toss-grey-900 dark:text-toss-grey-50;
   }
 
   .toss-segmented {
-    @apply inline-flex rounded-toss-m bg-toss-grey-100 p-1;
+    @apply inline-flex rounded-toss-m bg-toss-grey-100 p-1 dark:bg-toss-grey-900;
   }
 
   .toss-segmented-item {
-    @apply rounded-[10px] px-4 py-2 text-[15px] font-semibold text-toss-grey-700 transition-all duration-200 ease-toss;
+    @apply rounded-[10px] px-4 py-2 text-[15px] font-semibold text-toss-grey-700 transition-all duration-200 ease-toss dark:text-toss-grey-400;
   }
 
   .toss-segmented-item-active {
-    @apply bg-white text-toss-grey-900 shadow-toss-1;
+    @apply bg-white text-toss-grey-900 shadow-toss-1 dark:bg-toss-grey-700 dark:text-toss-grey-50 dark:shadow-none;
   }
 
   .toss-table-head {
-    @apply border-y border-toss-grey-200 bg-toss-grey-100 text-left text-[13px] font-semibold text-toss-grey-700;
+    @apply border-y border-toss-grey-200 bg-toss-grey-100 text-left text-[13px] font-semibold text-toss-grey-700 dark:border-toss-grey-600 dark:bg-toss-grey-900 dark:text-toss-grey-300;
   }
 
   .toss-table-cell {
-    @apply border-b border-toss-grey-100 px-4 py-3 text-[15px] tabular-nums text-toss-grey-800;
+    @apply border-b border-toss-grey-100 px-4 py-3 text-[15px] tabular-nums text-toss-grey-800 dark:border-toss-grey-700 dark:text-toss-grey-200;
+  }
+
+  .toss-empty-state {
+    @apply rounded-toss-m bg-toss-grey-100 px-4 py-6 text-center text-[15px] text-toss-grey-600 dark:bg-toss-grey-900 dark:text-toss-grey-400;
+  }
+
+  .toss-memo-item {
+    @apply rounded-toss-xl border border-toss-grey-200 bg-white p-4 shadow-toss-1 dark:border-toss-grey-600 dark:bg-toss-grey-800 dark:shadow-none;
+  }
+
+  .toss-memo-text {
+    @apply whitespace-pre-wrap text-[15px] leading-[1.5] text-toss-grey-800 dark:text-toss-grey-200;
+  }
+}
+
+@media print {
+  body {
+    @apply bg-white text-toss-grey-900;
+  }
+
+  .toss-card,
+  .toss-memo-item {
+    @apply border-toss-grey-200 bg-white shadow-none;
+  }
+
+  .print-hidden {
+    display: none !important;
   }
 }

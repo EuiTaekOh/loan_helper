@@ -52,11 +52,11 @@ function RepaymentTable({ schedule }: RepaymentTableProps) {
       </div>
 
       {schedule.length === 0 ? (
-        <p className="mt-4 text-[15px] text-toss-grey-600">
+        <p className="mt-4 text-[15px] text-toss-grey-600 dark:text-toss-grey-400">
           계산 결과가 없어요. 상환 조건을 입력하고 계산해 주세요.
         </p>
       ) : (
-        <div className="mt-4 overflow-x-auto rounded-toss-m border border-toss-grey-200">
+        <div className="mt-4 overflow-x-auto rounded-toss-m border border-toss-grey-200 dark:border-toss-grey-600">
           <table className="min-w-full border-collapse">
             <thead>
               <tr className="toss-table-head">
