@@ -62,6 +62,24 @@ describe('채점 시나리오 — 대출 상환 계산기', () => {
     })
     expect(result.schedule.at(-1)?.balance).toBe(0)
   })
+
+  it.each(cases)('$id 마지막 회차 잔액 0원', ({ principal, annualRate, months }) => {
+    const result = calculateRepayment({ principal, annualRate, months })
+    expect(result.schedule.at(-1)?.balance).toBe(0)
+  })
+
+  it.each(cases)('$id 스케줄 회차 수 = 상환기간', ({ principal, annualRate, months }) => {
+    const result = calculateRepayment({ principal, annualRate, months })
+    expect(result.schedule).toHaveLength(months)
+  })
+
+  it('monthlyPayment는 calculateRepayment 월 상환액을 원 단위 반올림한다', () => {
+    const input = { principal: 10_000_000, annualRate: 4.5, months: 60 }
+    const detail = calculateRepayment(input)
+    expect(monthlyPayment(input.principal, input.annualRate, input.months)).toBe(
+      Math.round(detail.monthlyPayment),
+    )
+  })
 })
 
 describe('calculateRepayment', () => {

@@ -5,20 +5,33 @@ alwaysApply: true
 
 # MCP Workflow
 
-이 프로젝트에 연결된 무료 MCP Server를 아래 상황에 활용한다.
+이 프로젝트 `.cursor/mcp.json`에 연결된 **무료 MCP Server**를 아래 상황에 활용한다.  
+상세 연동·확인 방법은 `docs/mcp-setup.md` 참고.
 
-| MCP | 용도 |
-|-----|------|
-| **fetch** | KB·금융 관련 공개 URL, API 문서, 최신 금리 정보 조회 |
-| **memory** | 상담 패턴·반복 요구사항·프로젝트 결정사항 기억 |
-| **filesystem** | `docs/`, `src/` 범위 파일 읽기·쓰기 (프로젝트 루트 한정) |
+| MCP | 용도 | 이 프로젝트 예시 |
+|-----|------|------------------|
+| **filesystem** | 프로젝트 루트 파일 읽기·쓰기 | `src/`, `docs/` 구조 탐색·일괄 수정 |
+| **context7** | 버전별 라이브러리 문서 조회 | React 19, Vitest, Vite, Tailwind CSS API 확인 |
+| **fetch** | 공개 URL HTML/텍스트 조회 | KB·금융 규정, 기준금리 공개 자료 |
+| **memory** | 대화 간 지식 그래프 저장 | 상담 FAQ, 고객 유형, 반복 요구사항 |
 
 ## Task별 가이드
 
-- **금융 계산 수정**: MCP 불필요 → `finance.ts` + Rules(`finance-logic`) 우선
+- **금융 계산 수정**: MCP 불필요 → `finance.ts` + `finance.test.ts` + Rules(`finance-logic`) 우선
 - **UI/디자인 수정**: MCP 불필요 → Rules(`ui-components`, `toss-style-design`) 우선
-- **외부 금리·규정 확인**: `fetch` MCP로 공개 자료 조회 후 코드 반영
-- **상담 시나리오 반복**: `memory` MCP에 고객 유형·FAQ 저장 후 참조
-- **대량 파일 탐색**: `filesystem` MCP로 `src/` 구조 확인
+- **라이브러리 API·설정이 헷갈릴 때**: **context7**로 최신 문서 조회 후 코드 반영
+- **외부 금리·규정 확인**: **fetch**로 공개 자료 조회, 출처 URL을 주석·PRD에 남김
+- **상담 시나리오 반복**: **memory**에 고객 유형·FAQ 저장 후 참조
+- **대량 파일 탐색·일괄 읽기**: **filesystem** MCP로 `src/` 구조 확인
 
-MCP 결과는 항상 `finance.ts` / `format.ts` 규칙을 따른 뒤 UI에 반영한다.
+## context7 사용 규칙
+
+- React·TypeScript·Vitest·Tailwind 관련 **버전·API 불확실**할 때 우선 호출한다.
+- 조회 후에도 이 프로젝트 Rules(`project`, `finance-logic`, `ui-components`)를 따른다.
+- context7 결과를 그대로 복붙하지 말고, `finance.ts` / `format.ts` 규칙에 맞게 적용한다.
+
+## MCP 결과 반영
+
+- 금융 수치·계산은 항상 `src/lib/finance.ts` 순수 함수로 검증 (`npm test`)
+- 금액 표시는 `src/lib/format.ts`의 `formatWon()` 사용
+- 외부 자료 인용 시 출처(URL·조회일)를 남긴다

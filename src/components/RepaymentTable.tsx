@@ -34,9 +34,9 @@ function RepaymentTable({ schedule }: RepaymentTableProps) {
 
   return (
     <div>
-      <div className="flex flex-wrap items-center justify-between gap-3">
+      <div className="toss-section-header">
         <h2 className="toss-title">월별 상환 스케줄</h2>
-        <div className="flex gap-2">
+        <div className="toss-action-row">
           <button
             type="button"
             onClick={downloadCsv}
@@ -56,8 +56,8 @@ function RepaymentTable({ schedule }: RepaymentTableProps) {
           계산 결과가 없어요. 상환 조건을 입력하고 계산해 주세요.
         </p>
       ) : (
-        <div className="mt-4 overflow-x-auto rounded-toss-m border border-toss-grey-200 dark:border-toss-grey-600">
-          <table className="min-w-full border-collapse">
+        <div className="toss-table-scroll mt-4 rounded-toss-m border border-toss-grey-200 dark:border-toss-grey-600">
+          <table className="w-full border-collapse">
             <thead>
               <tr className="toss-table-head">
                 <th className="px-4 py-3">회차</th>

@@ -116,7 +116,7 @@ function LoanCalculator({ result, onCalculated, onClearResult }: LoanCalculatorP
 
       {activeTab === 'loan' ? (
         <>
-          <form className="mt-6 grid gap-4 sm:grid-cols-3" onSubmit={handleSubmit} noValidate>
+          <form className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3" onSubmit={handleSubmit} noValidate>
             <label className="flex flex-col gap-2">
               <span className="toss-label">대출원금</span>
               <input
@@ -156,17 +156,17 @@ function LoanCalculator({ result, onCalculated, onClearResult }: LoanCalculatorP
               {errors.months ? <span className="toss-error">{errors.months}</span> : null}
             </label>
 
-            <div className="sm:col-span-3">
-              <button type="submit" className="toss-btn-primary">
+            <div className="md:col-span-3">
+              <button type="submit" className="toss-btn-primary w-full">
                 상환 스케줄 계산하기
               </button>
             </div>
 
-            {errors.common ? <p className="toss-error-box sm:col-span-3">{errors.common}</p> : null}
+            {errors.common ? <p className="toss-error-box md:col-span-3">{errors.common}</p> : null}
           </form>
 
           {result ? (
-            <div className="mt-6 grid gap-3 sm:grid-cols-3">
+            <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
               <div className="toss-stat-card">
                 <p className="toss-stat-label">월 상환액</p>
                 <p className="toss-stat-value">{formatWon(result.monthlyPayment)}</p>
@@ -183,7 +183,7 @@ function LoanCalculator({ result, onCalculated, onClearResult }: LoanCalculatorP
           ) : null}
         </>
       ) : (
-        <form className="mt-6 grid gap-4 sm:grid-cols-3" onSubmit={handleSavingsSubmit} noValidate>
+        <form className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3" onSubmit={handleSavingsSubmit} noValidate>
           <label className="flex flex-col gap-2">
             <span className="toss-label">원금</span>
             <input
@@ -227,9 +227,9 @@ function LoanCalculator({ result, onCalculated, onClearResult }: LoanCalculatorP
             {savingsErrors.months ? <span className="toss-error">{savingsErrors.months}</span> : null}
           </label>
 
-          <div className="sm:col-span-3">
+          <div className="md:col-span-3">
             <p className="toss-label">이자 방식</p>
-            <div className="toss-segmented mt-2">
+            <div className="toss-segmented mt-2 max-w-md">
               <button
                 type="button"
                 onClick={() => setInterestType('simple')}
@@ -247,18 +247,18 @@ function LoanCalculator({ result, onCalculated, onClearResult }: LoanCalculatorP
             </div>
           </div>
 
-          <div className="sm:col-span-3">
-            <button type="submit" className="toss-btn-primary">
+          <div className="md:col-span-3">
+            <button type="submit" className="toss-btn-primary w-full">
               만기 금액 계산하기
             </button>
           </div>
 
           {savingsErrors.common ? (
-            <p className="toss-error-box sm:col-span-3">{savingsErrors.common}</p>
+            <p className="toss-error-box md:col-span-3">{savingsErrors.common}</p>
           ) : null}
 
           {savingsResult ? (
-            <div className="grid gap-3 sm:col-span-3 sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-3 md:col-span-3 sm:grid-cols-2">
               <div className="toss-stat-card">
                 <p className="toss-stat-label">만기 예상 금액</p>
                 <p className="toss-stat-value">{formatWon(savingsResult.maturityAmount)}</p>

@@ -1,13 +1,5 @@
 {
   "mcpServers": {
-    "fetch": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-fetch"]
-    },
-    "memory": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-memory"]
-    },
     "filesystem": {
       "command": "npx",
       "args": [
@@ -15,6 +7,18 @@
         "@modelcontextprotocol/server-filesystem",
         "/Applications/KB국민은행/ACE Academy/DT 개발 스텝3 - 바이트디그리 AI 기반 업무자동화 실전/제출자료/과제/KB_오의택_여신도우미"
       ]
+    },
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp"]
+    },
+    "fetch": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-fetch"]
+    },
+    "memory": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"]
     }
   }
 }

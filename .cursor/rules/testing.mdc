@@ -1,0 +1,53 @@
+---
+description: Vitest TDD·단위 테스트 작성 규칙
+globs: src/**/*.test.ts
+alwaysApply: false
+---
+
+# 테스트 (TDD) 규칙
+
+## 실행
+
+```bash
+npm test          # 1회 실행 (CI·제출 전)
+npm run test:watch  # watch 모드 (TDD 개발)
+```
+
+## finance.ts 검증 (핵심)
+
+- 테스트 파일: `src/lib/finance.test.ts`
+- `finance.ts` 변경 시 **반드시** `npm test`로 검증한다.
+- 월 상환액 UI 표시용 검증은 `monthlyPayment()` — **원 단위 정수 반올림**
+- 상세 금액·스케줄 검증은 `calculateRepayment()` — 소수 둘째 자리 `round2`
+- 예·적금 만기는 `calculateSavingsMaturity()` — 단리/복리 분기
+
+## TDD 워크플로
+
+1. 실패하는 테스트를 먼저 작성한다 (Red)
+2. `finance.ts`에 최소 구현으로 통과시킨다 (Green)
+3. 중복 제거·검증 메시지 정리 (Refactor)
+4. UI 컴포넌트 테스트는 작성하지 않는다 — **순수 함수** 중심
+
+## 채점·회귀 시나리오
+
+`finance.test.ts`의 **채점 시나리오** 블록은 강의·과제 기준값을 고정한다. 기대값 변경 시 PRD·강의 자료와 대조 후 수정한다.
+
+| 케이스 | 원금 | 연율 | 개월 | 월 상환액(원) |
+|--------|------|------|------|---------------|
+| ① | 1,000만 | 5.0% | 12 | 856,075 |
+| ② | 3,000만 | 4.5% | 36 | 892,408 |
+| ③ | 5,000만 | 3.9% | 60 | 918,571 |
+| ④ | 500만 | 6.0% | 6 | 847,977 |
+| ⑤ | 1,200만 | 0% | 12 | 1,000,000 |
+
+## 엣지 케이스 필수
+
+- 이자율 0% — 균등 분할, 총 이자 0
+- 상환 1개월 — 원금+이자 일시 상환
+- 마지막 회차 잔액 0
+- 잘못된 입력 — `throw new Error` 메시지 한국어 일치
+
+## 기타 lib 테스트
+
+- `storage.test.ts` — localStorage 메모 CRUD (jsdom 없이 mock)
+- `loanForm.test.ts` — 입력 정제·폼 검증
